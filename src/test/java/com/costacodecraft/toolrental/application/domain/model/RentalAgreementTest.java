@@ -48,7 +48,7 @@ public class RentalAgreementTest {
         "Daily Rental Charge: $1.99\n" +
         "Charge Days: 5\n" +
         "Pre-discount Amount: $9.95\n" +
-        "Discount Percent: 10\n" +
+        "Discount Percent: 10%\n" +
         "Discount Amount: $0.99\n" +
         "Final Charge: $8.96";
 

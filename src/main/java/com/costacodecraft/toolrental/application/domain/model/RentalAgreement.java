@@ -48,7 +48,7 @@ public record RentalAgreement(
         + "\nDaily Rental Charge: " + nf.format(dailyChargeAmount)
         + "\nCharge Days: " + chargeDays
         + "\nPre-discount Amount: " + nf.format(preDiscountAmount)
-        + "\nDiscount Percent: " + discountPercent
+        + "\nDiscount Percent: " + String.format("%d%%", discountPercent)
         + "\nDiscount Amount: " + nf.format(discountAmount)
         + "\nFinal Charge: " + nf.format(finalChargeAmount);
   }

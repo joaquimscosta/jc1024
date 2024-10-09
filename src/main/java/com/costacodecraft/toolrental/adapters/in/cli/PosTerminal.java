@@ -78,7 +78,7 @@ public class PosTerminal implements CommandLineRunner {
         continueRunning = handleMenuChoice(choice);
       } catch (InvalidDataEntryException | InvalidDiscountException |
                InvalidRentalDayException | ToolNotFoundException e) {
-        System.out.println(e.getMessage());
+        System.err.println(e.getMessage());
       }
     }
     System.out.println(EXIT_MESSAGE);
