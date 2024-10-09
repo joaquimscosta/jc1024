@@ -59,7 +59,7 @@ Example test case: `CheckoutServiceIntegrationTest`
 - Invalid Discount: Tests that an `InvalidDiscountException` is thrown when the discount percentage is invalid.
 - Holiday and Weekend Charges: Tests the implementation of holiday and weekend charges under various scenarios.
 
-### Core Functionality Tests
+### Unit Tests
 
 The project includes tests for core functionality and critical paths to ensure system accuracy.
 
