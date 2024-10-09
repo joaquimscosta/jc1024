@@ -14,7 +14,6 @@ The Tool Rental Application is a command-line interface (CLI) tool rental system
 ### Prerequisites
 
 - Java 21
-- Gradle 8.10.2
 
 ### Installation
 
@@ -40,7 +39,7 @@ To build the project, run the following command:
 To run the application, use the following command:
 
 ```sh
-./gradlew bootRun
+java -jar ./build/libs/toolrental-0.0.1-SNAPSHOT.jar
 ```
 
 ## Testing
@@ -55,10 +54,14 @@ To run the tests, use the following command:
 
 The project includes integration tests for the `CheckoutUseCase` to ensure the correctness of the rental process. These tests cover various scenarios such as invalid discounts and rental charge calculations.
 
-Example test case: `CheckoutUseCaseIntegrationTest`
+Example test case: `CheckoutServiceIntegrationTest`
 
-Invalid Discount: Tests that an `InvalidDiscountException` is thrown when the discount percentage is invalid.
+- Invalid Discount: Tests that an `InvalidDiscountException` is thrown when the discount percentage is invalid.
+- Holiday and Weekend Charges: Tests the implementation of holiday and weekend charges under various scenarios.
 
+### Core Functionality Tests
+
+The project includes tests for core functionality and critical paths to ensure system accuracy.
 
 ## Usage
 
@@ -68,9 +71,15 @@ Once the application is running, you can interact with it via the command-line i
 
 - **Checkout a Tool**: Follow the prompts to enter tool code, rental days, discount percentage, and checkout date.
 - **View Tools**: Display a list of available tools with their details.
+- **Lookup Order**: Search for an order by its ID.
 
 ## Limitations
 
 - **In-Memory Data Persistence**: Data is not saved between application restarts.
 - **Command-Line Interface**: Limited user-friendliness compared to GUI or web interfaces.
 - **Basic Error Handling**: May not cover all edge cases. For example, adding a limit on the maximum rental days to prevent unrealistic rental periods.
+- **Order-Customer Association**: Orders are not associated with a customer, which limits tracking and management of customer-specific rentals.
+
+## Future Improvements
+
+- **Money Class**: Create a `Money` class and use it in the `CheckoutItem` when dealing with money calculations to improve code clarity and maintainability.

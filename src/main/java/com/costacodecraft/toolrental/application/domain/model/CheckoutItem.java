@@ -99,7 +99,7 @@ public record CheckoutItem(
   public BigDecimal getDiscountAmount() {
     LOGGER.debug("Calculating discount amount");
     BigDecimal preDiscountAmount = getPreDiscountAmount();
-    double percent = discountPercentage/100.0;
+    double percent = discountPercentage / 100.0;
     BigDecimal discountAmount = preDiscountAmount.multiply(BigDecimal.valueOf(percent))
         .setScale(2, RoundingMode.HALF_UP);
     LOGGER.debug("Discount amount calculated: {}", discountAmount);

@@ -1,4 +1,4 @@
-package com.costacodecraft.toolrental.application.port.in;
+package com.costacodecraft.toolrental.application.domain.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -13,11 +13,11 @@ import com.costacodecraft.toolrental.application.domain.model.Price;
 import com.costacodecraft.toolrental.application.domain.model.Tool;
 import com.costacodecraft.toolrental.application.domain.model.Tool.ToolId;
 import com.costacodecraft.toolrental.application.domain.model.ToolType;
-import com.costacodecraft.toolrental.application.domain.service.CheckoutService;
-import com.costacodecraft.toolrental.application.domain.service.CheckoutValidator;
-import com.costacodecraft.toolrental.application.domain.service.CreateOrderService;
-import com.costacodecraft.toolrental.application.domain.service.GetChargeableDaysService;
-import com.costacodecraft.toolrental.application.domain.service.GetHolidayService;
+import com.costacodecraft.toolrental.application.port.in.CheckoutCommand;
+import com.costacodecraft.toolrental.application.port.in.CheckoutUseCase;
+import com.costacodecraft.toolrental.application.port.in.CreateOrderUseCase;
+import com.costacodecraft.toolrental.application.port.in.GeHolidayUseCase;
+import com.costacodecraft.toolrental.application.port.in.GetChargeableDaysUseCase;
 import com.costacodecraft.toolrental.application.port.out.OrderRepository;
 import com.costacodecraft.toolrental.application.port.out.ToolRepository;
 import java.math.BigDecimal;
@@ -38,10 +38,10 @@ import org.slf4j.LoggerFactory;
  * Integration tests for the CheckoutService.
  * These test cases assume that the tools are configured as specified in {@link #getTools()}.
  */
-class CheckoutUseCaseIntegrationTest {
+class CheckoutServiceIntegrationTest {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(
-      CheckoutUseCaseIntegrationTest.class);
+      CheckoutServiceIntegrationTest.class);
 
   private ToolRepository toolRepository;
   private OrderRepository orderRepository;

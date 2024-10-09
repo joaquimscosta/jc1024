@@ -56,7 +56,11 @@ public class PosTerminal implements CommandLineRunner {
    */
   @Override
   public void run(String... args) throws Exception {
-    displayMainMenu();
+    try {
+      displayMainMenu();
+    } finally {
+      scanner.close();
+    }
   }
 
   /**
@@ -64,20 +68,20 @@ public class PosTerminal implements CommandLineRunner {
    */
   private void displayMainMenu() {
     System.out.println(WELCOME);
-    while (true) {
+    boolean continueRunning = true;
+    while (continueRunning) {
       try {
         displayToolList();
         displayMenuOptions();
         String choice = scanner.next();
         scanner.nextLine(); // Consume newline
-        if (!handleMenuChoice(choice)) {
-          break;
-        }
+        continueRunning = handleMenuChoice(choice);
       } catch (InvalidDataEntryException | InvalidDiscountException |
                InvalidRentalDayException | ToolNotFoundException e) {
-        logger.error("Error: {}", e.getMessage());
+        System.out.println(e.getMessage());
       }
     }
+    System.out.println(EXIT_MESSAGE);
   }
 
   /**
@@ -109,10 +113,7 @@ public class PosTerminal implements CommandLineRunner {
         orderLookupForm();
         yield true;
       }
-      case "3" -> {
-        System.out.println(EXIT_MESSAGE);
-        yield false;
-      }
+      case "3" -> false;
       default -> {
         System.out.println(INVALID_CHOICE_MESSAGE);
         yield true;
